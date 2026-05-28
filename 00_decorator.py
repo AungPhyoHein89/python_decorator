@@ -1,3 +1,4 @@
+'''
 # ==========================================
 # 1. CORE FUNCTION (The Original Action)
 # ==========================================
@@ -23,3 +24,19 @@ def seat_belt_decorator(original_function):
 decorated_drive = seat_belt_decorator(drive_car)
 
 decorated_drive()
+
+'''
+
+def seat_belt_decorator(original_function):
+  def wrapper():
+    print("🔒 [SAFETY CHECK] Seatbelt automatically fastened.") # pre action
+    original_function()
+    print("🔓 [SAFETY CHECK] Arrived safely. Seatbelt unfastened.") # Post-action
+  return wrapper
+
+@seat_belt_decorator
+def drive_car():
+  print("🚗 Engine started!, Drive car now Bro")
+
+drive_car()
+
